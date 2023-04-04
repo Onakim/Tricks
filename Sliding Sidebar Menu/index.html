@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sliding Sidebar Menu</title>
+    <style>
+      :root {
+        --bg-color: #111827;
+        --sidebar-bg-color: #1f2937;
+        --button-bg-color: #475569;
+        --button-bg-color-hover: #374151;
+        --sidebar-width: 500px;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg-color);
+        color: white;
+      }
+      body.sidebar-open {
+        overflow: hidden;
+      }
+      /* Idle state */
+      .page-content {
+        padding: 50px;
+        transform: translateX(0);
+        transition: 0.5s ease transform;
+      }
+      /* Sidebar-open state */
+      body.sidebar-open .page-content {
+        transform: translateX(var(--sidebar-width));
+      }
+      .menu-button,
+      .close-menu-button {
+        background: var(--button-bg-color);
+        color: white;
+        padding: 5px 8px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+      }
+      .close-menu-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+      .menu-button:hover {
+        background: var(--button-bg-color-hover);
+      }
+      /* Idle sidebar-menu */
+      .sidebar-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: var(--sidebar-width);
+        background: var(--sidebar-bg-color);
+        z-index: 2;
+        transform: translateX(-100%);
+        transition: 0.5s ease transform;
+      }
+      /* Sidebar-open state */
+      body.sidebar-open .sidebar-menu {
+        transform: translateX(0);
+      }
+      /* Idle overlay */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+        display: none;
+      }
+      body.sidebar-open .overlay {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="">
+    <div class="sidebar-menu">
+      <button class="close-menu-button">
+        <svg width="24px" height="24px" viewBox="0 -0.5 21 21">
+          <g stroke="none" fill="none" fill-rule="evenodd">
+            <g
+              id="Dribbble-Light-Preview"
+              transform="translate(-419.000000, -240.000000)"
+              fill="#ffffff"
+            >
+              <g id="icons" transform="translate(56.000000, 160.000000)">
+                <polygon
+                  points="375.0183 90 384 98.554 382.48065 100 373.5 91.446 364.5183 100 363 98.554 371.98065 90 363 81.446 364.5183 80 373.5 88.554 382.48065 80 384 81.446"
+                ></polygon>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </button>
+    </div>
+    <div class="overlay"></div>
+    <div class="page-content">
+      <div class="header">
+        <button class="menu-button">
+          <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
+            <path
+              fill="currentColor"
+              d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"
+            />
+          </svg>
+        </button>
+      </div>
+      <h1>Page Title</h1>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam
+        inventore porro similique, soluta dignissimos corrupti voluptatum fugit
+        saepe ea delectus expedita repudiandae animi perspiciatis quod officia
+        vero voluptatibus? Odit, aliquid!
+      </p>
+    </div>
+    <script>
+      const menuButton = document.querySelector(".menu-button");
+      const closeMenuButton = document.querySelector(".close-menu-button");
+      const overlay = document.querySelector(".overlay");
+      menuButton.addEventListener("click", toggleSidebarOpen);
+      closeMenuButton.addEventListener("click", toggleSidebarOpen);
+      overlay.addEventListener("click", toggleSidebarOpen);
+      function toggleSidebarOpen() {
+        document.body.classList.toggle("sidebar-open");
+      }
+    </script>
+  </body>
+</html>
