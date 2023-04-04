@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hide Navbar on scroll</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      nav {
+        background: #001627;
+        color: white;
+        padding: 20px;
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transition: 0.25s ease transform;
+      }
+      p {
+        margin: 100px 50px;
+      }
+      .hidden {
+        transform: translateY(-100%);
+      }
+    </style>
+  </head>
+  <body>
+    <nav>Title</nav>
+    <div class="content">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dolore
+        cupiditate, a minima ut sit quam mollitia eligendi debitis cumque
+        provident molestiae magnam neque reiciendis, aliquam quia nostrum
+        aspernatur iste.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dolore
+        cupiditate, a minima ut sit quam mollitia eligendi debitis cumque
+        provident molestiae magnam neque reiciendis, aliquam quia nostrum
+        aspernatur iste.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dolore
+        cupiditate, a minima ut sit quam mollitia eligendi debitis cumque
+        provident molestiae magnam neque reiciendis, aliquam quia nostrum
+        aspernatur iste.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dolore
+        cupiditate, a minima ut sit quam mollitia eligendi debitis cumque
+        provident molestiae magnam neque reiciendis, aliquam quia nostrum
+        aspernatur iste.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dolore
+        cupiditate, a minima ut sit quam mollitia eligendi debitis cumque
+        provident molestiae magnam neque reiciendis, aliquam quia nostrum
+        aspernatur iste.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dolore
+        cupiditate, a minima ut sit quam mollitia eligendi debitis cumque
+        provident molestiae magnam neque reiciendis, aliquam quia nostrum
+        aspernatur iste.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dolore
+        cupiditate, a minima ut sit quam mollitia eligendi debitis cumque
+        provident molestiae magnam neque reiciendis, aliquam quia nostrum
+        aspernatur iste.
+      </p>
+    </div>
+
+    <script>
+      let lastScrollY = 0;
+      const navBar = document.querySelector("nav");
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY) {
+          console.log("scroll Down");
+          navBar.classList.add("hidden");
+        } else {
+          console.log("scrol Up");
+          navBar.classList.remove("hidden");
+        }
+        lastScrollY = currentScrollY;
+      });
+    </script>
+  </body>
+</html>
